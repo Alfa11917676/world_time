@@ -11,16 +11,26 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   int counter = 0;
 
+  void getData() {
+    // simulate network request for a username
+    Future.delayed(const Duration(seconds: 3), () {
+      counter+=1;
+      print('Counter raised to $counter');
+    });
+    print('getting data');
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('function ran');
+    getData();
+    // print('function ran');
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build function ran $counter');
+    print('build function ran');
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -32,7 +42,8 @@ class _ChooseLocationState extends State<ChooseLocation> {
       body: ElevatedButton(
         onPressed: () {
           setState(() {
-            counter += 1;
+            print("Getting data");
+            getData();
           });
         },
         child: Text('Counter is $counter'),
