@@ -9,15 +9,7 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
 
-  void getData() {
-    // simulate network request for a username
-    Future.delayed(const Duration(seconds: 3), () {
-      print('yoshi');
-    });
-    print('getting data');
-
-  }
-
+  int counter = 0;
 
   @override
   void initState() {
@@ -28,7 +20,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   @override
   Widget build(BuildContext context) {
-    print('build function ran');
+    print('build function ran $counter');
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
