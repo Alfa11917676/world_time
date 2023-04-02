@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({Key? key}) : super(key: key);
-
   @override
   State<ChooseLocation> createState() => _ChooseLocationState();
 }
@@ -10,22 +9,28 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
 
   int counter = 0;
+  int counter2 = 0;
 
-  void getData() {
-    // simulate network request for a username
-    Future.delayed(const Duration(seconds: 3), () {
+  void getData() async {
+
+    String firstCounter =  await Future.delayed(const Duration(seconds: 3), () {
       counter+=1;
-      print('Counter raised to $counter');
+      return counter.toString();
     });
-    print('getting data');
+
+    String secondCounter = await Future.delayed(const Duration(seconds: 2), () {
+      counter2+=1;
+      return counter2.toString();
+    });
+    print("First counter is $firstCounter and second counter is $secondCounter");
+
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
-    // print('function ran');
+    print('function ran');
   }
 
   @override
@@ -37,7 +42,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
         backgroundColor: Colors.blue[900],
         title: const Text('Choose a Location'),
         centerTitle: true,
-        elevation: 0,
+        elevation: 0
       ),
       body: ElevatedButton(
         onPressed: () {
@@ -46,7 +51,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
             getData();
           });
         },
-        child: Text('Counter is $counter'),
+        child: Text('Counter is $counter and $counter2'),
       )
     );
   }
